@@ -84,7 +84,7 @@ WSGI_APPLICATION = 'backend.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': os.getenv("ENGINE"),
-        'HOST': os.getenv("HOST"),
+        'HOST': 'localhost',
         'USER': os.getenv("USER"),
         'PASSWORD': os.getenv("PASSWORD"),
         'NAME': os.getenv("NAME"),
