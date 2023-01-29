@@ -140,15 +140,17 @@ REST_FRAMEWORK = {
 
 CORS_ORIGIN_ALLOW_ALL = True
 
-STATIC_URL = 'static/'
-STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'backend/static'),
+    os.path.join(BASE_DIR, 'static'),
 ]
 
 
 
 # Heroku settings
 import django_heroku
+import dj_database_url
 
-django_heroku.settings(locals(), staticfiles=False)
+django_heroku.settings(locals())
+del DATABASES['default']['OPTIONS']['sslmode']
