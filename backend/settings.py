@@ -153,3 +153,4 @@ import django_heroku
 import dj_database_url
 
 django_heroku.settings(locals())
+del DATABASES['default']['OPTIONS']['sslmode']
