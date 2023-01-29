@@ -140,6 +140,13 @@ REST_FRAMEWORK = {
 
 CORS_ORIGIN_ALLOW_ALL = True
 
+STATIC_URL = 'static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'backend/static'),
+]
+
+
 
 # Heroku settings
 import django_heroku
