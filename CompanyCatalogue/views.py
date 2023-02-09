@@ -17,7 +17,7 @@ class CompanyAPIView(generics.ListAPIView):
     filter_fields = ('id',)
     search_fields = ('name', 'description', "service__name")
     filterset_fields = ('city', )
-    ordering_fields = ('name', "service__price")
+    ordering_fields = ('name',)
 
     def get_queryset(self):
         queryset = Company.objects.prefetch_related("city").prefetch_related("service").all()
@@ -36,5 +36,11 @@ class CityAPIView(generics.ListAPIView):
 
 
 class ServiceAPIView(generics.ListAPIView):
+    filter_backends = (SearchFilter, OrderingFilter)
     serializer_class = ServiceSerializer
     queryset = Service.objects.select_related("company").all()
+
+    search_fields = ('name',)
+    ordering_fields = ('price',)
+
+
